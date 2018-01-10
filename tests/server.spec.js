@@ -19,13 +19,13 @@ describe('server/app.js', function() {
   })
 
   it('responds to /', (done) => {
-    chai.request(server)
-      .get('/')
-      .end((err, res) => {
-        expect(err).not.exist;
-        expect(res).to.have.status(200);
-        done();
-      });
+  chai.request(server)
+    .get('/')
+    .end((err, res) => {
+      expect(err).not.exist;
+      expect(res).to.have.status(200);
+      done();
+    });
   });
 
   it('page says hello world', (done) => {
@@ -34,7 +34,15 @@ describe('server/app.js', function() {
     .end((err, res) => {
       expect(err).not.exist;
       expect(JSON.stringify(res.text)).to.contain('Hello World');
-      done();
+      // done();
+    });
+
+  chai.request(server)
+  .get('/')
+  .end((err, res) => {
+    expect(err).not.exist;
+    expect(JSON.stringify(res.text)).to.contain('Please pass');
+    done();
     });
   });
 })
